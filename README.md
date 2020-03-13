@@ -4,8 +4,6 @@ My dotfiles for i3wm and sundry apps on my Laptop, extremely similar to my main 
 
 I use user templates for Pywal extremely heavily, In other words, many of the config files are actually in the ~/.config/wal/Templates folder. They need to be copied to the same folder on your system and once you've ran wal on a wallpaper you can then symlink them to their usual locations for them to work. 
 
-I also include a slightly modified version of Rofimenu
-
 
 # Applications Needed / Used 
 
