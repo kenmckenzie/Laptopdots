@@ -124,21 +124,21 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+c split h ; exec notify-send 'Horizontal orientation'
+bindsym $mod+c split h ; exec notify-send -t 2000 'Horizontal orientation'
 
 # split in vertical orientation
-bindsym $mod+v split v ; exec notify-send 'Vertical orientation'
+bindsym $mod+v split v ; exec notify-send -t 2000 'Vertical orientation'
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle; exec notify-send 'Fullscreen Mode'
+bindsym $mod+f fullscreen toggle; exec notify-send -t 2000'Fullscreen Mode'
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking;exec notify-send 'Stacking layout'
-bindsym $mod+w layout tabbed; exec notify-send 'Tabbed layout'
-bindsym $mod+e layout toggle split; exec notify-send 'Toggle split'
+bindsym $mod+s layout stacking;exec notify-send -t 2000 'Stacking layout'
+bindsym $mod+w layout tabbed; exec notify-send -t 2000 'Tabbed layout'
+bindsym $mod+e layout toggle split; exec notify-send -t 2000 'Toggle split'
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle; exec notify-send 'Toggle floating/tiling'
+bindsym $mod+Shift+space floating toggle; exec notify-send -t 2000 'Toggle floating/tiling'
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
