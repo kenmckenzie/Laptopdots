@@ -27,7 +27,8 @@ I also include a slightly modified version of Rofimenu
 
 - nitrogen (for wallpapers, you can also use feh but i3 config will need to be edited)
 
-- st (build is in my repo)
+- st (I use a modified version of lukesmithxyz's @ https://github.com/asolopovas/st,
+      any version will work just ensure it is compiled with xresource patch)
 
 - zsh (Autocomplete and highlighting plugins used)
 
