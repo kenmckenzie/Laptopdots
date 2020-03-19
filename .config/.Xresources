@@ -1,0 +1,31 @@
+! URxvt Config for laptop, no longer in use since I use st but keeping it as backup
+
+URxvt.font:     		   xft:Hack Nerd Font Mono 
+URxvt.scrollBar:                  false
+URxvt.mouseWheelScrollPage:       false
+URxvt.cursorBlink:                true
+URxvt.foreground:                 grey
+URxvt.saveLines:                  5000
+URxvt.depth: 32
+URxvt.background: rgba:0000/0000/0200/c800
+
+! Disable for certain keypresses
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! Copy paste (No perls used)
+URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
+URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
+
+URxvt.perl-ext-common:  default,matcher,resize-font
+
+! clickable urls 
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+! positioning and ricing for rofi on laptop (Set for 1080p adjust for other resolutions)
+rofi.yoffset :  -322
+rofi.width : 25
+rofi.show-icons : true
+rofi.font : Hack Nerd Font 12
+
