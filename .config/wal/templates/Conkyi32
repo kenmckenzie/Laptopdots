@@ -59,13 +59,13 @@ conky.config = {{
 
 conky.text = [[
 ${{color1}}${{font Hack Nerd Font:size=45}}${{alignc}}${{offset -10}}
-${{voffset -40}}${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}DATE/TIME${{color3}}${{stippled_hr 2}}${{color2}}
+${{voffset -40}}${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}DATE/TIME${{color3}}${{hr 2}}${{color2}}
 ${{color2}}${{font Hack Nerd Font Mono:pixelsize=16}}${{time %A}}${{alignr}}${{font Hack Nerd Font Mono:pixelsize=16}}${{time %B %d}},${{time %G}}
 ${{color1}}${{font Hack Nerd Font Mono:pixelsize=17}}${{alignc}}${{offset 5}}${{time %I:%M %P }}${{color2}}
 #Alot of the below system configs are customised for my system eg:cpu temps and such, make sure to adjust accordingly
 #
 
-${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}SYSTEM ${{color3}}${{stippled_hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
+${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}SYSTEM ${{color3}}${{hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
 
 ${{color2}}${{font Hack Nerd Font Mono:pixelsize=16}}DISTRO: ${{alignr}}Arch Linux
 ${{color2}}${{font Hack Nerd Font Mono:pixelsize=16}}KERNEL: ${{alignr}}${{kernel}}
@@ -76,9 +76,9 @@ ${{color2}}${{font Hack Nerd Font Mono:pixelsize=16}}PROCESSOR: ${{alignr}}${{ex
 #CPU LOAD: ${{alignr 10}}${{loadavg}}
 #MB TEMP: ${{alignr 10}}${{execi 15 sensors | tail -n 15 | grep -i "temp1" | cut -c 15-22}}
 #UPDATES:  ${{alignr 8}}${{color1}}${{color1}}${{execpi 3600 checkupdates | wc -l}}
-#${{color2}}${{font Hack Mono:pixelsize=12}}p ${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}DESKTOP ${{color3}}${{stippled_hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
+#${{color2}}${{font Hack Mono:pixelsize=12}}p ${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}DESKTOP ${{color3}}${{hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
 #DESKTOP: ${{desktop}}  
-${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}NETWORK ${{color3}}${{stippled_hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
+${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}NETWORK ${{color3}}${{hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
 
 ${{color2}}${{font Hack Nerd Font Mono:pixelsize=16}}UP: ${{alignr}}${{upspeed enp12s0}}
 ${{upspeedgraph enp12s0 15,230 color1 color1}}
@@ -87,7 +87,7 @@ ${{downspeedgraph enp12s0 15,230- color1 color1}}
 ${{color2}}${{font Hack Nerd Font Mono:pixelsize=16}}TOTAL UP: ${{alignr}}${{totalup enp12s0}}
 ${{color2}}${{font Hack Nerd Font Mono:pixelsize=16}}TOTAL DOWN: ${{alignr}}${{totaldown enp12s0}}
 
-${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}CPU ${{color3}}${{stippled_hr 2}}${{color2}}
+${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}CPU ${{color3}}${{hr 2}}${{color2}}
 
 ${{font Hack Nerd Font Mono Mono:pixelsize=16}}${{cpu cpu0}}% ${{goto 35}}  ${{color4}}${{cpubar 5,190 cpu0}}${{color2}}
 ${{color2}}${{font Hack Nerd Font Mono:pixelsize=16}}CORE 1: ${{alignr}}${{freq cpu1}}MHz
@@ -101,12 +101,12 @@ ${{font Hack Nerd Font Mono:pixelsize=16}}${{cpu cpu4}}%${{goto 35}} ${{color4}}
 CPU TEMP: ${{alignr}}${{execp sensors | tail -n 15 | grep -i "Core 0" | cut -c 17-20}} °C
 #FAN SPEED: ${{alignr}}${{execi 15 sensors | grep -i "fan1" | cut -c 14-21}}
 
-#${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}GPU ${{color3}}${{stippled_hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
+#${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}GPU ${{color3}}${{hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
 #
 #${{font Hack Nerd Font Mono:pixelsize=16}}${{color2}}${{execi 5 radeontop -d- -l1 | grep -o 'gpu [0-9]\{{1,3\}}' | cut -c 5-7 }}% ${{goto 25}}${{color4}}${{execibar 5 radeontop -d- -l1 | grep -o 'gpu [0-9]\{{1,3\}}' | cut -c 5-7 }}
 #${{color2}}GPU TEMP: ${{alignr 10}}${{execi 15 sensors | head -n 10 | grep -i "temp1" | cut -c 15-22}}
 #
-${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}MEMORY ${{color3}}${{stippled_hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
+${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}MEMORY ${{color3}}${{hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
 
 ${{font Hack Nerd Font Mono:pixelsize=16}}Used/Total: ${{alignr}}${{mem}}/${{memmax}}
 ${{memperc}}%${{font Hack Nerd Font Mono:pixelsize=16}} ${{alignr}}${{color4}}${{membar 5,190}}${{color2}}
@@ -117,7 +117,7 @@ ${{font Hack Nerd Font Mono:pixelsize=16}}${{top_mem name 4}}${{alignr 10}}${{to
 ${{font Hack Nerd Font Mono:pixelsize=16}}${{top_mem name 5}}${{alignr 10}}${{top_mem mem 5}}%
 #${{font Hack Nerd Font Mono:pixelsize=16}}${{top_mem name 6}}${{alignr 10}}${{top_mem mem 6}}%
 
-${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}DISCS ${{color3}}${{stippled_hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
+${{color1}}${{font Hack Nerd Font Mono:pixelsize=16}}DISCS ${{color3}}${{hr 2}}${{color2}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}
 ${{font Hack Nerd Font Mono:pixelsize=16}}/Root: ${{alignr}}${{fs_used /}}/${{fs_size /}}
 ${{font Hack Nerd Font Mono:pixelsize=16}}${{fs_used_perc /}}%${{color4}} ${{fs_bar 5,190 /}}${{font Hack Nerd Font Mono Mono:pixelsize=16}}${{color2}}
 ${{font Hack Nerd Font Mono:pixelsize=16}}/Home: ${{alignr}}${{fs_used /home}}/${{fs_free /home}}
