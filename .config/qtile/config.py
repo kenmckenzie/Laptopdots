@@ -24,16 +24,39 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# TODO, finish switching away from wal template for setting colors, 
+# Longterm, split things up to different files for readibility
+
+
 from libqtile.config import Key, Screen, Group, Drag, Click , ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook, extension
 from xrec import colors, layout_theme # see xrec.py in qtile folder
+import xrp
+import json
 from typing import List  # noqa: F401
-from os import environ
+from os import environ , getenv, path
 
 # Get terminal from environment variables
 terminal = environ.get("TERMINAL")
 mod = "mod4"
+
+
+# parse xresources in file, much better implementation 
+xresources = path.realpath(getenv('HOME') + '/.config/.Xresources')
+result = xrp.parse_file(xresources, 'utf-8')
+
+color_data = json.loads(open(getenv('HOME')+'/.cache/wal/colors.json').read())
+# BLACK = color_data['colors']['color0']
+# BLACK = "#15181a"
+BLACK = "#1A1C1D"
+RED = color_data['colors']['color1']
+GREEN = color_data['colors']['color2']
+YELLOW = color_data['colors']['color3']
+BLUE = color_data['colors']['color4']
+MAGENTA = color_data['colors']['color5']
+CYAN = color_data['colors']['color6']
+WHITE = color_data['colors']['color7']
 
 keys = [
     # Switch between windows in current stack pane
@@ -94,7 +117,7 @@ keys = [
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
     Key([mod], "Return", lazy.spawn("st")),
-    Key([mod], "d", lazy.spawn("dmenu_run")),
+    Key([mod], "d",  lazy.run_extension(extension.DmenuRun())),
     Key([mod], "F1", lazy.spawn("atom")),
     Key([mod], "F2", lazy.spawn("brave")),
     Key([mod], "F3", lazy.spawn("thunar")),
@@ -110,12 +133,12 @@ keys = [
             lazy.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")),
     Key([], "XF86AudioStop", 
             lazy.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop")),
-    Key([mod], 'g', lazy.run_extension(extension.CommandSet(
+    Key([mod], '0', lazy.run_extension(extension.CommandSet(
         commands={
             'lock': 'slock',
             'suspend': 'systemctl suspend && slock',
             'restart': 'reboot',
-            'halt': 'systemctl poweroff',
+            'shutdown': 'systemctl poweroff',
             'logout': 'qtile-cmd -o cmd -f shutdown',
             'reload': 'qtile-cmd -o cmd -f restart',
             },
@@ -128,8 +151,14 @@ keys = [
 #    Key(["mod4"], "XF86AudioRaiseVolume", lazy.spawn("mpc volume +5")),
 #    Key(["mod4"], "XF86AudioLowerVolume", lazy.spawn("mpc volume -5")),
 
+    Key([mod], "Tab", lazy.run_extension(extension.WindowList(
+        item_format="{group}: {window}",
+        foreground=BLUE,
+        selected_background=BLUE)),
+        desc='window list'),
+
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout()),
+    Key([mod,'shift'], "Tab", lazy.next_layout()),
     Key([mod], "q", lazy.window.kill()),
 
     Key([mod, "control"], "r", lazy.restart()),
@@ -186,20 +215,20 @@ layouts = [
     layout.Max(),
     layout.MonadWide(**layout_theme),
     layout.RatioTile(**layout_theme),
-    layout.TreeTab(
-        font = "monospace",
-        fontsize = 10,
-        sections = ["FIRST", "SECOND"],
-        section_fontsize = 11,
-        bg_color = "141414",
-        active_bg = "90C435",
-        active_fg = "000000",
-        inactive_bg = "384323",
-        inactive_fg = "a0a0a0",
-        padding_y = 5,
-        section_top = 10,
-        panel_width = 320
-        ),
+#    layout.TreeTab(
+#        font = "monospace",
+#        fontsize = 10,
+#        sections = ["FIRST", "SECOND"],
+#        section_fontsize = 11,
+#        bg_color = "141414",
+#        active_bg = "90C435",
+#        active_fg = "000000",
+#        inactive_bg = "384323",
+#        inactive_fg = "a0a0a0",
+#        padding_y = 5,
+#        section_top = 10,
+#        panel_width = 320
+#        ),
     layout.VerticalTile(**layout_theme),
     layout.Zoomy(**layout_theme),
 ]
@@ -210,7 +239,16 @@ widget_defaults = dict(
     padding=0,
     background=colors[0],
 )
-extension_defaults = widget_defaults.copy()
+#extension_defaults = widget_defaults.copy()
+extension_defaults = dict(
+    dmenu_prompt=">",
+    dmenu_font='monospace',
+    background=BLACK,
+    foreground=GREEN,
+    selected_background=GREEN,
+    selected_foreground=BLACK,
+    dmenu_height=24,
+    )
 
 screens = [
     Screen(
